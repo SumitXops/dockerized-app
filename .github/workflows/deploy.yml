@@ -15,10 +15,10 @@ jobs:
       - uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SERVER_IP }}
-          username: codespace
+          username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /workspaces/dockerized-app
+            cd ~/dockerized-app
             git pull
-            docker compose down
-            docker compose up -d --build
+            sudo docker compose down
+            sudo docker compose up -d --build
